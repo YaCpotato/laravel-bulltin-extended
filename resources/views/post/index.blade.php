@@ -3,6 +3,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <div class="container ops-main">
+<form action="post/create" methods="get">
+{{ csrf_field() }}
+  <input type="submit" value="新規投稿">
+</form>
 <div class="row">
   <div class="col-md-12">
     <h3 class="ops-title">投稿一覧</h3>
