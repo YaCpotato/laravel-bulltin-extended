@@ -23,7 +23,7 @@
       @foreach($posts as $post)
       <tr>
       <td>
-          <a href="{{ url('post/edit') }}">{{ $post->id }}</a>
+          <a href="{{ url('post/'.$post->id) }}">{{ $post->id }}</a>
         </td>
         <td>{{ $post->UserId }}</td>
         <td>{{ $post->content }}</td>

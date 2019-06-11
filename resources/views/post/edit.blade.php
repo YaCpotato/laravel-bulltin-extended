@@ -1,14 +1,15 @@
 <div class="container ops-main">
     <div class="row">
         <div class="col-md-6">
-            <h2>書籍登録</h2>
+            <h2>内容編集</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-8 col-md-offset-1">
-            <form action="/post/{{ $post->id }}" method="post">
-            {{ csrf_field() }}
-            @method('POST')
+            <form action="{{ url('post/'.$post->id) }}" method="post">
+            @csrf
+            @method('PUT')
+            <input name="_method" type="hidden" value="PUT">
                 <div class="form-group">
                     <label for="content">内容</label>
                     <input type="text" class="form-control" name="content">
