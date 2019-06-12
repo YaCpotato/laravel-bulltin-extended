@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+
+$count = 1;
+
 class PostController extends Controller
 {
     /**
@@ -40,8 +43,8 @@ class PostController extends Controller
     {
         $newPost = new Post;
         $newPost->UserId = 1;
-        $newPost->level = 1;
-        $newPost->nextId = 1;
+        $newPost->level = 0;
+        $newPost->nextId = $count + 1;//借り入れ
         $newPost->content = $request->content;
         $newPost->save();
         $posts = Post::latest()->get();
@@ -93,6 +96,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        return redirect("/post");
     }
 }
