@@ -11,8 +11,4 @@
 データベースにデフォルトの値をセットしましょう(seeding)  
 3. `php artisan db:seed`  
   
-サーバーを起動  
-4. `php artisan serve`  
-
-ページがひらけます
-5. http://localhost:8000  
+MAMPを開く
