@@ -24,7 +24,15 @@
       </tr>
       @foreach($posts as $post)
       <tr>
-      <td></td>
+      @if(isset($post->toId))
+        <td>
+          
+        </td>
+      @elseif(!isset($post->toId))
+        <td> 
+
+        </td>
+      @endif
       <td>
           <a href="{{ url('post/'.$post->id) }}">{{ $post->id }}</a>
         </td>
