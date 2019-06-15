@@ -12,3 +12,8 @@
 3. `php artisan db:seed`  
   
 MAMPを開く
+htdocs下にフォルダを作った場合、該当フォルダのserver.phpをクリックする。
+
+http://localhost:8888/server.php/post
+
+で掲示板へいける
