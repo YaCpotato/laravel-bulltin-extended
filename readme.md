@@ -11,8 +11,9 @@
 データベースにデフォルトの値をセットしましょう(seeding)  
 3. `php artisan db:seed`  
   
-サーバーを起動  
-4. `php artisan serve`  
+MAMPを開く
+htdocs下にフォルダを作った場合、該当フォルダのserver.phpをクリックする。
 
-ページがひらけます
-5. http://localhost:8000  
+http://localhost:8888/server.php/post
+
+で掲示板へいける
