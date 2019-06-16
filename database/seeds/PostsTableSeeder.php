@@ -16,30 +16,29 @@ class PostsTableSeeder extends Seeder
 
         // 初期データ用意（列名をキーとする連想配列）
         $Post = [
-                ['UserId' => 8,
-                'title' => 'T',
-                'content' => 'N',
+                ['UserId' => 1,
+                'title' => 'root',
+                'content' => 'root',
                 'level' => 1,
                 'nextId' => 2
                 ],
-                ['UserId' => 4,
-                'title' => 'T',
-                'content' => 'N',
+                ['UserId' => 2,
+                'title' => 'two',
+                'content' => 'two',
                 'level' => 1,
                 'nextId' => 4,
                 ],
-                ['UserId' => 5,
-                'title' => 'T',
-                'content' => 'N',
+                ['UserId' => 3,
+                'title' => 'three',
+                'content' => 'three',
                 'level' => 2,
-                'nextId' => 4,
                 'toId' => 1
                 ],
-                ['UserId' => 9,
-                'title' => 'T',
-                'content' => 'N',
+                ['UserId' => 4,
+                'title' => 'four',
+                'content' => 'four',
                 'level' => 1,
-                'nextId' => 5,
+                'nextId' => 3,
                 ],
                 ];
 

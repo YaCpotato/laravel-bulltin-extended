@@ -19,7 +19,7 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('content');
             $table->integer('level');
-            $table->integer('nextId');->nullable();
+            $table->integer('nextId')->nullable();
             $table->integer('toId')->nullable();
             $table->timestamps();
         });

@@ -18,9 +18,32 @@ class PostController extends Controller
     {
         // DBよりBookテーブルの値を全て取得
         $posts = Post::latest()->get();
+        $postList = array();
+        array_push($postList,$posts[0]);
+        foreach($posts as $i =>$post){
+            if(isset($post->nextId)){
+                foreach($posts as $j =>$subpost){
+                    if($post->nextId == $subpost->id){
+                        array_push($postList,$subpost);
+                    }
+                }
+            }
+        }
+        // foreach($posts as $post){
+        //     if(!isset($post->toId)){
+        //         array_push($postList,$post);
+        //     }else{
+        //         $target = $post->toId;
+        //         foreach($posts as $post){
+        //             if($post["id"]==$target){
+        //                 array_push($postList,$post);
+        //             }
+        //         }
+        //     }
+        // }
   
         // 取得した値をビュー「book/index」に渡す
-        return view('post/index', compact('posts'));
+        return view('post/index', compact('postList'));
     }
 
     /**
@@ -41,7 +64,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $count = 0;
         $newPost = new Post;
+        $newPost->title = "sample";
         $newPost->UserId = 1;
         $newPost->level = 0;
         $newPost->nextId = $count + 1;//借り入れ

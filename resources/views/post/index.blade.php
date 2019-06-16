@@ -14,29 +14,21 @@
 </div>
 <div class="row">
   <div class="col-md-11 col-md-offset-1">
-    <table class="table text-center">
+  <table class="table text-center">
       <tr>
-        <th class="text-center"><th>
         <th class="text-center">ID</th>
         <th class="text-center">ユーザーID</th>
+        <th class="text-center">子ID</th>
+        <th class="text-center">次ID</th>
         <th class="text-center">タイトル</th>
         <th class="text-center">コンテンツ</th>
       </tr>
-      @foreach($posts as $post)
+      @foreach($postList as $post)
       <tr>
-      @if(isset($post->toId))
-        <td>
-          
-        </td>
-      @elseif(!isset($post->toId))
-        <td> 
-
-        </td>
-      @endif
-      <td>
-          <a href="{{ url('post/'.$post->id) }}">{{ $post->id }}</a>
-        </td>
+      <td><a href="{{ url('post/'.$post->id) }}">{{ $post->id }}</a></td>
         <td>{{ $post->UserId }}</td>
+        <td>{{ $post->toId }}</td>
+        <td>{{ $post->nextId }}</td>
         <td>{{ $post->title }}</td>
         <td>{{ $post->content }}</td>
         <td>
