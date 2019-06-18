@@ -17,8 +17,9 @@
   <table class="table text-center">
       <tr>
         <th class="text-center">ID</th>
+        <th class="text-center">リアクト</th>
         <th class="text-center">ユーザーID</th>
-        <th class="text-center">子ID</th>
+        <th class="text-center">親ID</th>
         <th class="text-center">次ID</th>
         <th class="text-center">タイトル</th>
         <th class="text-center">コンテンツ</th>
@@ -26,6 +27,11 @@
       @foreach($postList as $post)
       <tr>
       <td><a href="{{ url('post/'.$post->id) }}">{{ $post->id }}</a></td>
+      <td><form action="{{ url('post/'.$post->id) }}" method="get">
+            <input type="hidden" name="type" value="reply">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-xs btn-danger" aria-label="Left Align">ボタン</button>
+          </form></td>
         <td>{{ $post->UserId }}</td>
         <td>{{ $post->toId }}</td>
         <td>{{ $post->nextId }}</td>

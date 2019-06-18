@@ -64,16 +64,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $count = 0;
         $newPost = new Post;
         $newPost->title = "sample";
         $newPost->UserId = 1;
         $newPost->level = 0;
-        $newPost->nextId = $count + 1;//借り入れ
+        $newPost->toId = $request->id;
         $newPost->content = $request->content;
         $newPost->save();
-        $posts = Post::latest()->get();
-        return view('post/index', compact('posts'));
+        $postList = Post::latest()->get();
+        return view('post/index', compact('postList'));
     }
 
     /**
@@ -82,9 +81,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Request $request,Post $post)
     {
-        return view('post.show', ['post' => $post]);
+        $type = $request->type;
+        return view('post.show', ['post' => $post,'type'=> $type]);
     }
 
     /**
