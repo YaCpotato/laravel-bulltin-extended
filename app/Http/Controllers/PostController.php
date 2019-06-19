@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         // DBよりBookテーブルの値を全て取得
-        $posts = Post::latest()->get();
+        $posts = Post::all()->sortBy('id');
         $postList = array();
         array_push($postList,$posts[0]);
         foreach($posts as $i =>$post){
@@ -55,10 +55,11 @@ class PostController extends Controller
         $newPost->UserId = 1;
         $newPost->level = 0;
         $newPost->toId = $request->id;
-        $newPost->nextId = Post::max('id');
+        $newPost->nextId = Post::max('id') +2;
+
         $newPost->content = $request->content;
         $newPost->save();
-        $postList = Post::latest()->get();
+        $postList = Post::all()->sortBy('id');
         return view('post/index', compact('postList'));
     }
 
