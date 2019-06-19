@@ -1,4 +1,4 @@
-# laravelで作った掲示板
+# (開発中)laravelで作った掲示板
 
 # laravelで作った掲示板(REST設計にしてあります)
 
@@ -17,3 +17,6 @@ htdocs下にフォルダを作った場合、該当フォルダのserver.phpを�
 http://localhost:8888/server.php/post
 
 で掲示板へいける
+
+20190620 
+テスト用にSeederファイルを編集。次IDの仕組みを編集
