@@ -20,25 +20,6 @@ class PostsTableSeeder extends Seeder
                 'title' => 'root',
                 'content' => 'root',
                 'level' => 1,
-                'nextId' => 2
-                ],
-                ['UserId' => 2,
-                'title' => 'two',
-                'content' => 'two',
-                'level' => 1,
-                'nextId' => 4,
-                ],
-                ['UserId' => 3,
-                'title' => 'three',
-                'content' => 'three',
-                'level' => 2,
-                'toId' => 1
-                ],
-                ['UserId' => 4,
-                'title' => 'four',
-                'content' => 'four',
-                'level' => 1,
-                'nextId' => 3,
                 ],
                 ];
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 
-$count = 1;
 
 class PostController extends Controller
 {
@@ -29,19 +28,6 @@ class PostController extends Controller
                 }
             }
         }
-        // foreach($posts as $post){
-        //     if(!isset($post->toId)){
-        //         array_push($postList,$post);
-        //     }else{
-        //         $target = $post->toId;
-        //         foreach($posts as $post){
-        //             if($post["id"]==$target){
-        //                 array_push($postList,$post);
-        //             }
-        //         }
-        //     }
-        // }
-  
         // 取得した値をビュー「book/index」に渡す
         return view('post/index', compact('postList'));
     }
@@ -69,6 +55,7 @@ class PostController extends Controller
         $newPost->UserId = 1;
         $newPost->level = 0;
         $newPost->toId = $request->id;
+        $newPost->nextId = Post::max('id');
         $newPost->content = $request->content;
         $newPost->save();
         $postList = Post::latest()->get();
