@@ -15,10 +15,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        // DBよりBookテーブルの値を全て取得
         $postList = Post::where('level', 1)->orderBy('id')->get();
-        // 取得した値をビュー「book/index」に渡す
-        return view('post/index', compact('postList'));
+        $childList = Post::where('level', 2)->orderBy('id')->get();
+        return view('post/index', compact('postList','childList'));
     }
 
     /**
@@ -53,7 +52,8 @@ class PostController extends Controller
         $newPost->content = $request->content;
         $newPost->save();
         $postList = Post::where('level', 1)->orderBy('id')->get();
-        return view('post/index', compact('postList'));
+        $childList = Post::where('level', 2)->orderBy('id')->get();
+        return view('post/index', compact('postList','childList'));
     }
 
     /**

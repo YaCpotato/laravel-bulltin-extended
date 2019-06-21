@@ -45,6 +45,29 @@
           </form>
         </td>
       </tr>
+      @foreach($childList as $child)
+      @if($child->toId == $post->id)
+      <td><a href="{{ url('post/'.$child->id) }}">{{ $child->id -1 }}</a></td>
+      <td><form action="{{ url('post/'.$child->id) }}" method="get">
+            <input type="hidden" name="type" value="reply">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-xs btn-danger" aria-label="Left Align">ボタン</button>
+          </form></td>
+        <td>{{ $child->UserId }}</td>
+        <td>{{ $child->toId -1 }}</td>
+        <td>{{ $child->nextId }}</td>
+        <td>{{ $child->title }}</td>
+        <td>{{ $child->content }}</td>
+        <td>
+          <form action="{{ url('post/'.$child->id) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            <button type="submit" class="btn btn-xs btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-trash"></span></button>
+          </form>
+        </td>
+      </tr>
+      @endif
+      @endforeach
       @endforeach
     </table>
   </div>
