@@ -26,7 +26,7 @@
       </tr>
       @foreach($postList as $post)
       <tr>
-      <td><a href="{{ url('post/'.$post->id) }}">{{ $post->id }}</a></td>
+      <td><a href="{{ url('post/'.$post->id) }}">{{ $post->id -1 }}</a></td>
       <td><form action="{{ url('post/'.$post->id) }}" method="get">
             <input type="hidden" name="type" value="reply">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

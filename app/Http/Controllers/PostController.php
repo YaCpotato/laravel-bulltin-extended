@@ -16,18 +16,7 @@ class PostController extends Controller
     public function index()
     {
         // DBよりBookテーブルの値を全て取得
-        $posts = Post::all()->sortBy('id');
-        $postList = array();
-        array_push($postList,$posts[0]);
-        foreach($posts as $i =>$post){
-            if(isset($post->nextId)){
-                foreach($posts as $j =>$subpost){
-                    if($post->nextId == $subpost->id){
-                        array_push($postList,$subpost);
-                    }
-                }
-            }
-        }
+        $postList = Post::where('level', 1)->orderBy('id')->get();
         // 取得した値をビュー「book/index」に渡す
         return view('post/index', compact('postList'));
     }
@@ -53,13 +42,17 @@ class PostController extends Controller
         $newPost = new Post;
         $newPost->title = "sample";
         $newPost->UserId = 1;
-        $newPost->level = 0;
+        if(isset($request->id)){
+            $newPost->level = 2;
+        }else{
+            $newPost->level = 1;
+        }
         $newPost->toId = $request->id;
         $newPost->nextId = Post::max('id') +2;
 
         $newPost->content = $request->content;
         $newPost->save();
-        $postList = Post::all()->sortBy('id');
+        $postList = Post::where('level', 1)->orderBy('id')->get();
         return view('post/index', compact('postList'));
     }
 
