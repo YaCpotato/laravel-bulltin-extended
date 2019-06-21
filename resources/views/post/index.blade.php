@@ -34,7 +34,7 @@
           </form></td>
         <td>{{ $post->UserId }}</td>
         <td>{{ $post->toId }}</td>
-        <td>{{ $post->nextId }}</td>
+        <td>{{ $post->nextId -1 }}</td>
         <td>{{ $post->title }}</td>
         <td>{{ $post->content }}</td>
         <td>

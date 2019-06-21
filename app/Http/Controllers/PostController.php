@@ -43,12 +43,12 @@ class PostController extends Controller
         $newPost->UserId = 1;
         if(isset($request->id)){
             $newPost->level = 2;
+            $newPost->nextId = null;
         }else{
             $newPost->level = 1;
+            $newPost->nextId = Post::max('id') +2;
         }
         $newPost->toId = $request->id;
-        $newPost->nextId = Post::max('id') +2;
-
         $newPost->content = $request->content;
         $newPost->save();
         $postList = Post::where('level', 1)->orderBy('id')->get();
