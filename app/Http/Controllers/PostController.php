@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 
 class PostController extends Controller
@@ -40,7 +41,7 @@ class PostController extends Controller
     {
         $newPost = new Post;
         $newPost->title = "sample";
-        $newPost->UserId = 1;
+        $newPost->UserId = Auth::user()->id;
         if(isset($request->id)){
             $newPost->level = 2;
             $newPost->nextId = null;

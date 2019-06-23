@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <head>
   <title>Laravel Sample</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,11 +40,13 @@
         <td>{{ $post->title }}</td>
         <td>{{ $post->content }}</td>
         <td>
+        @if($post->UserId == Auth::user()->id)
           <form action="{{ url('post/'.$post->id) }}" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <button type="submit" class="btn btn-xs btn-danger" aria-label="Left Align"><span class="glyphicon glyphicon-trash"></span></button>
           </form>
+        @endif
         </td>
       </tr>
       @foreach($childList as $child)
@@ -72,3 +76,4 @@
     </table>
   </div>
 </div>
+@endsection
